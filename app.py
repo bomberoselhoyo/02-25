@@ -26,16 +26,6 @@ bomberos_equipados = total_recaudado / costo_por_bombero
 # Mostrar los datos en la app
 st.title("Avance de la Colecta")
 
-# Mostrar la cantidad de bomberos equipados con un solo decimal en color rojo
-st.markdown(f"<h3 style='color:red;'>Bomberos equipados: {bomberos_equipados:.1f}</h3>", unsafe_allow_html=True)
-
-# Mostrar el monto recaudado y lo que falta
-st.metric(
-    label="Monto Recaudado",
-    value=f"${total_recaudado:,.2f}",
-    delta=f"${meta - total_recaudado:,.2f} faltan",
-)
-
 # Crear el medidor circular para mostrar el porcentaje de avance
 gauge = go.Figure(go.Indicator(
     mode="gauge+number",
@@ -56,6 +46,16 @@ gauge = go.Figure(go.Indicator(
 
 # Mostrar el medidor circular
 st.plotly_chart(gauge, use_container_width=True, key=f"gauge_chart_{int(porcentaje_avance)}")
+
+# Mostrar la cantidad de bomberos equipados con un solo decimal en color rojo, debajo del gráfico
+st.markdown(f"<h3 style='color:red;'>Bomberos equipados: {bomberos_equipados:.1f}</h3>", unsafe_allow_html=True)
+
+# Mostrar el monto recaudado y lo que falta
+st.metric(
+    label="Monto Recaudado",
+    value=f"${total_recaudado:,.2f}",
+    delta=f"${meta - total_recaudado:,.2f} faltan",
+)
 
 # Agregar el texto al pie de la página con negritas
 st.markdown("""
