@@ -2,8 +2,12 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Cargar datos desde Google Sheets
-url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdoYbngv7jBofQIEtnuoeylBn0o0TEY8NiPOZ43VmLvz7AGfmNFdveUB_DVLIRC2bJVZnO4XI0vqdb/pub?output=csv"
+
+# Cargar datos desde Google Sheets con cacheo de 4 horas
+@st.cache_data(ttl=14400)  # 14400 segundos = 4 horas
+def cargar_datos():
+    url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdoYbngv7jBofQIEtnuoeylBn0o0TEY8NiPOZ43VmLvz7AGfmNFdveUB_DVLIRC2bJVZnO4XI0vqdb/pub?output=csv"
+    return pd.read_csv(url)
 df = pd.read_csv(url)
 
 # Definir la meta de recaudación
