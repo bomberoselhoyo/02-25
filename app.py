@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 def cargar_datos():
     url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdoYbngv7jBofQIEtnuoeylBn0o0TEY8NiPOZ43VmLvz7AGfmNFdveUB_DVLIRC2bJVZnO4XI0vqdb/pub?output=csv"
     return pd.read_csv(url)
-df = pd.read_csv(url)
+df = cargar_datos()
 
 # Definir la meta de recaudación
 meta = 42108664  # Ajustar según tu meta
