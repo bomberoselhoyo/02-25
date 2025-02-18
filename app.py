@@ -4,15 +4,11 @@ import matplotlib.pyplot as plt
 
 
 # Cargar datos desde Google Sheets con cacheo de 4 horas
-@st.cache_data(ttl=60)  # 14400 segundos = 4 horas
+
 def cargar_datos():
     url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdoYbngv7jBofQIEtnuoeylBn0o0TEY8NiPOZ43VmLvz7AGfmNFdveUB_DVLIRC2bJVZnO4XI0vqdb/pub?output=csv"
     return pd.read_csv(url)
 df = cargar_datos()
-
-# Botón para forzar la recarga de los datos
-if st.button('Forzar actualización de datos'):
-    st.experimental_rerun()  # Forzar la recarga de la app y ejecutar nuevamente la función de carga
 
 # Definir la meta de recaudación
 meta = 42108664  # Ajustar según tu meta
