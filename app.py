@@ -10,6 +10,10 @@ def cargar_datos():
     return pd.read_csv(url)
 df = cargar_datos()
 
+# Botón para forzar la recarga de los datos
+if st.button('Forzar actualización de datos'):
+    st.experimental_rerun()  # Forzar la recarga de la app y ejecutar nuevamente la función de carga
+
 # Definir la meta de recaudación
 meta = 42108664  # Ajustar según tu meta
 
