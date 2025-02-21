@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 
 # Cargar datos desde Google Sheets
 def cargar_datos():
-    url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdoYbngv7jBofQIEtnuoeylBn0o0TEY8NiPOZ43VmLvz7AGfmNFdveUB_DVLIRC2bJVZnO4XI0vqdb/pub?output=csv"
+    url = st.secrets["SHEETS_URL"]
     return pd.read_csv(url)
 
 # Llamar a la función que carga los datos
